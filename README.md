@@ -22,4 +22,4 @@ The following modules are called within these programs: GEallsubsets.py, genSimD
 All these .py files should be in a folder containing a subfolder named
 LocustData that must contain data files: locust20010217_spont_tetD_uX.txt where X=[1,2,3,4,7]
 
-Acknoledgement: Cnpq support (proc no 165828/2015-3)
+Acknoledgements: This content was produced as part of the activities of FAPESP  Research, Innovation and Dissemination Center for Neuromathematics (grant no 2013/07699-0 , S.Paulo Research Foundation). I also acknowledge Cnpq support (proc no 165828/2015-3) and FAPESP support (proc no 2016/24676-1).
