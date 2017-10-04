@@ -16,7 +16,11 @@ https://arxiv.org/abs/1612.05226
 Requirements:
 Python 3 with the following modules: matplotlib, numpy, pylab, time and itertools
 
-To generate figures in order of appearance in the manuscript, run: SimulationsXiEps.py, Pruning.py, ProjectedConnections.py, ExperimentalGE.py
+To generate figures in order of appearance in the manuscript, run: 
+..* SimulationsXiEps.py
+..* Pruning.py
+..* ProjectedConnections.py
+..* ExperimentalGE.py
 
 The following modules are called within these programs: GEallsubsets.py, genSimData.py, GE.py, GEplots.py
 
