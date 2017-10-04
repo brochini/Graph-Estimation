@@ -24,7 +24,9 @@ To generate figures in order of appearance in the manuscript, run:
 
 The following modules are called within these programs: GEallsubsets.py, genSimData.py, GE.py, GEplots.py
 
-All these .py files should be in a folder containing a subfolder named LocustData that must contain data files: locust20010217_spont_tetD_uX.txt where X=[1,2,3,4,7]
+All these .py files should be in a folder containing a subfolder named LocustData that must contain data files:
+
+*locust20010217_spont_tetD_uX.txt where X=[1,2,3,4,7]*
 
 which can be found in LocustData.tar.gz in this repository and contains the pre-processed data corresponding to the spike times for this set of 5 neurons during a trial of a experiment. The raw experimental data corresponds to multielectrode recordings of the spontaneous activity of neurons in the antennal lobe of the locust *Schistocerca americana* and can be found in zenodo
 https://zenodo.org/record/21589#%20.WQoUCx1Jlz9
