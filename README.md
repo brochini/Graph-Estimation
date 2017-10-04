@@ -1,13 +1,13 @@
 # Graph-Estimation
 
-##### Oct 2017
-##### by L. Brochini for Neuromat
+#### Oct 2017
+#### by L. Brochini for Neuromat
 
 These programs are part of the Supplementary material, allowing reproduction of figures in the paper:
 
 
- ##### "Interaction graph estimation for the first olfactory relay of an insect"
- ##### L. Brochini, P.Hodara, C.Pouzat, A.Galves 
+ #### "Interaction graph estimation for the first olfactory relay of an insect"
+ #### L. Brochini, P.Hodara, C.Pouzat, A.Galves 
 
 
 Currently on arxiv
