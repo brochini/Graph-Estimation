@@ -51,6 +51,7 @@ of zeros and ones where lines correspond to neurons in Fi and l columns, where l
 
 
 """
+
 #%%
 import numpy as np
 import itertools
