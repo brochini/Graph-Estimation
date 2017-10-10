@@ -31,25 +31,28 @@ import time
 def setMatrixNet1():
     N=5
     Wmatrix=np.zeros([N,N])
-
+    mu=0.4
+    Pspont=0.02
     Wmatrix[0]=[0,0,0.1,0,0] 
     Wmatrix[1]=[0.1,0,0.3,0.4,0]
     Wmatrix[2]=[0,0.4,0,0.8,0]
     Wmatrix[3]=[0.3,0,0.1,0,0.5]
     Wmatrix[4]=[0.2,0,0.8,0,0]
-    return Wmatrix
+    return Wmatrix,mu,Pspont
 
 def setMatrixNet2():
     N=10
     w=0.5
+    mu=0.9
+    Pspont=0.06
     Connlist=['10','04','23','35','56','87','89'] # list of connections 1->0 etc..
     Wmat=np.zeros([N,N])
     for conn in Connlist:
         Wmat[int(conn[0]),int(conn[1])]=w
-    return(Wmat)
+    return Wmat,mu,Pspont
 
 
-def GenSample(Wmatrix,nsteps,mu=0.9,Pspont=0.02):
+def GenSample(Wmatrix,nsteps,mu=0.4,Pspont=0.02):
     start = time.time()      
     print("\n\nSimulating a network of GL neurons with the provided connectivity matrix.")
     print("Sample size will be ", nsteps)

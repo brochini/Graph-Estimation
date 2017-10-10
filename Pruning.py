@@ -33,12 +33,12 @@ epsilon=0.05
 xi=0.001 
 
 # Create very simple network of 10 connected neurons
-Wmat=genSimData.setMatrixNet2()
+Wmat,muNet2,PspontNet2=genSimData.setMatrixNet2()
 N=len(Wmat)
 GElist=[] # List of graph estimations for no pruning, and consecutive prunings
 
 # generate sample : More neurons and smaller sample size: pruning should be helpful in this case
-D=genSimData.GenSample(Wmat,200000,Pspont=0.04) 
+D=genSimData.GenSample(Wmat,200000,mu=muNet2,Pspont=PspontNet2) 
 prunables=[[] for neuron in range(N)] # list (for each postsyn) of lists of presynaptic candidate neurons to be pruned at each step
 
 GElist.append(GE.main([D['X']],xi,epsilon,details=False,upperlim=30)) # First, runing the GE without pruning

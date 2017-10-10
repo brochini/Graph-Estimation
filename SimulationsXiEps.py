@@ -26,14 +26,13 @@ epsilonrange=[0.01, 0.05, 0.1, 0.15] # Sensitivity parameter range to be tested
 xirange=[0.001, 0.01, 0.1, 0.15] # cutoff parameter range to be tested
 V={}
 nsteps=1000000
-Wmat=genSimData.setMatrixNet1() # Preselected connectivity matrix. To change it, simply create an np.array of NxN with values in the range [-1,1]
-D=genSimData.GenSample(Wmat,nsteps,mu=0.1) # Provides sample of process of GL neurons connected with the given connectivity matrix and for n time steps with leakage parameter mu 
+Wmat,muNet1,PspontNet1=genSimData.setMatrixNet1() # Preselected connectivity matrix. To change it, simply create an np.array of NxN with values in the range [-1,1]
+D=genSimData.GenSample(Wmat,nsteps,mu=muNet1,Pspont=PspontNet1) # Provides sample of process of GL neurons connected with the given connectivity matrix and for n time steps with leakage parameter mu 
 
 for epsilon in epsilonrange:
     for xi in xirange:
         print('\n\nParameters: xi=',xi,' epsilon=',epsilon)
         V[(epsilon,xi)]=GE.main([D['X']],xi,epsilon,details=False) #returns only the GE matrix
         
-#GEplots.PlotMultDifs(Wmat,V,epsilonrange,xirange,"SimData_Net1",r"Simulated data n="+str(nsteps)+". Grey=True positive, White=True negative, \n  Red=False positive, Blue= False negative, Light colors= Inconclusives") 
 pickle.dump({'V':V,'Wmat':Wmat,'epsilonrange':epsilonrange,'xirange':xirange,'nsteps':nsteps},open('SimdataNet1.pkl','wb'))
-GEplots.PlotMultDifs(Wmat,V,epsilonrange,xirange,"SimData_Net1"," ")  
+GEplots.PlotMultDifs(Wmat,V,epsilonrange,xirange,"SimDataEpsXi"," ")  
