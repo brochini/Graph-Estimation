@@ -9,9 +9,11 @@ This program is part of the Supplementary material to the paper:
 L. Brochini, P.Hodara, C.Pouzat, A.Galves 
 __________________________
 
-Plotting functions for GEs
+Module of plotting functions used to represent connectivity matrices
 obs: hatch and transparecny are not saved properly in eps and many other formats.
 Formats that display correctly are pdf and svgz
+
+Default is set to output black and white figures. To obtain color figures, pass default argument colors='yes' 
 '''
 
 
@@ -59,10 +61,7 @@ def map_w_inconclusives():
 
 
     
-    
-#maps for hatched Black and White patterns
-
-
+  
 def maphatch():
     from matplotlib.colors import LinearSegmentedColormap
     vmin=0
@@ -75,7 +74,7 @@ def maphatch():
     return(cmap,vmin,vmax) 
 
 
-def maphatch2():
+def maphatch2(): # one extra level of grey. Used to differentiate between inconclusives corresponding to true or absent connections
     from matplotlib.colors import LinearSegmentedColormap
     vmin=0
     vmax=5
@@ -88,16 +87,7 @@ def maphatch2():
     return(cmap,vmin,vmax) 
 
 
-#def maphatch():
-#    from matplotlib.colors import LinearSegmentedColormap
-#    vmin=0
-#    vmax=4
-#    cmap = LinearSegmentedColormap.from_list('mycmap', [(0 / (vmax-vmin), 'white'),
-#                                                        (1 /(vmax-vmin), 'black'),
-#                                                        (2 / (vmax-vmin), (1,1,1,0)),
-#                                                        (3 / (vmax-vmin), (0.5,0.5,0.5,0.5)),
-#                                                        (4 / (vmax-vmin), 'grey')])
-#    return(cmap,vmin,vmax) 
+
 
 def maphatchBase():
     from matplotlib.colors import LinearSegmentedColormap
@@ -306,3 +296,39 @@ def PlotISIHist(ISI,nbins,xlim,figname,title,GoodNeurons,acquisitionrate):
     
     pylab.savefig(figname+'.pdf', format='pdf', dpi=1000)        
         
+
+def PlotWmatrix(Wmatrix,figname,HighDiag=False,title=''):
+    N=len(Wmatrix)
+    myvmax=max(max([max(Wmatrix[i]) for i in range(len(Wmatrix))]),(-1)* min([min(Wmatrix[i]) for i in range(len(Wmatrix))]))
+    myvmin=-myvmax
+    if HighDiag:
+        for neuron in range(N):
+            Wmatrix[neuron,neuron]=myvmax
+            
+    fig=plt.figure();
+    ax=fig.add_subplot(111);
+    pplot=ax.pcolor(Wmatrix, cmap='jet', vmin=myvmin, vmax=myvmax);
+    ax.set(aspect=1)
+    
+    ax.set_ylabel("Presynaptic")
+    ax.set_xlabel("Postsynaptic")      
+    ax.set(frame_on=False, aspect=1, xticks=range(1,N+1), yticks=range(1,N+1))
+    ax.invert_yaxis() 
+    ax.xaxis.set_label_position('top')
+    ax.xaxis.tick_top()
+    
+    tickpos=list(np.array(range(N))+0.5)
+    ticknames=[str(i) for i in range(1,N+1)]
+    ax.tick_params(axis=u'both', which=u'both',length=0)    
+    ax.xaxis.set_major_formatter(ticker.NullFormatter())
+    ax.xaxis.set_minor_locator(ticker.FixedLocator(tickpos))
+    ax.xaxis.set_minor_formatter(ticker.FixedFormatter(ticknames))
+    
+    ax.tick_params(axis=u'both', which=u'both',length=0)    
+    ax.yaxis.set_major_formatter(ticker.NullFormatter())
+    ax.yaxis.set_minor_locator(ticker.FixedLocator(tickpos))
+    ax.yaxis.set_minor_formatter(ticker.FixedFormatter(ticknames))
+    fig.suptitle(title)
+    fig.colorbar(pplot)
+    pylab.savefig(figname)
+    
