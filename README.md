@@ -6,8 +6,8 @@
 These programs are part of the Supplementary material, allowing reproduction of figures in the paper:
 
 
- #### "Interaction graph estimation for the first olfactory relay of an insect"
- #### L. Brochini, P.Hodara, C.Pouzat, A.Galves 
+ #### "Estimation of neuronal interaction graph from spike train data"
+ #### Brochini L., Galves A., Hodara P., Ost G., Pouzat C. 
 
 
 Currently on arxiv
